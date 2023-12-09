@@ -3,24 +3,12 @@ local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
 lsp.ensure_installed({
-  'tsserver',
-  'rust_analyzer',
   'lua_ls',
-  'csharp_ls',
   'jedi_language_server',
 
 })
 
--- Fix Undefined global 'vim'
-lsp.configure('lua_ls', {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            }
-        }
-    }
-})
+lsp.nvim_workspace()
 
 
 local cmp = require('cmp')
@@ -42,10 +30,10 @@ lsp.setup_nvim_cmp({
 lsp.set_preferences({
     suggest_lsp_servers = false,
     sign_icons = {
-        error = '✘',
-        warn = '▲',
-        hint = '⚑',
-        info = ''
+        error = 'E',
+        warn = 'W',
+        hint = 'H',
+        info = 'I'
     }
 })
 
