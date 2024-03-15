@@ -1,6 +1,13 @@
-vim.cmd("colorscheme nightfox")
+require('nightfox').setup({
+  options = {
+    transparent = true,
+    colorblind = {
+      enable = true,
+    },
+  }
+})
 
-function ColorMyPencils(color) 
+function ColorMyPencils(color)
 	color = color or "nightfox"
 	vim.cmd.colorscheme(color)
 

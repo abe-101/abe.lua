@@ -34,11 +34,15 @@ return require('packer').startup(function(use)
     }
     -- use('nvim-treesitter/playground')
     use('mbbill/undotree')
-    use("github/copilot.vim")
+    use{
+        "github/copilot.vim",
+        cmd = "Copilot",
+        event = "TextChangedI",
+    }
     use('tpope/vim-fugitive')
     use {
         'VonHeikemen/lsp-zero.nvim',
-        branch = 'v1.x',
+        branch = 'v3.x',
         requires = {
             -- LSP Support
             {'neovim/nvim-lspconfig'},             -- Required
@@ -52,6 +56,9 @@ return require('packer').startup(function(use)
             {'hrsh7th/cmp-path'},         -- Optional
             {'saadparwaiz1/cmp_luasnip'}, -- Optional
             {'hrsh7th/cmp-nvim-lua'},     -- Optional
+            {'hrsh7th/vscode-langservers-extracted'}, -- Optional
+            {'hrsh7th/cmp-nvim-lsp-signature-help'}, -- Optional
+
 
             -- Snippets
             {'L3MON4D3/LuaSnip'},             -- Required
@@ -59,9 +66,14 @@ return require('packer').startup(function(use)
         }
     }
     use 'nvim-tree/nvim-web-devicons'
-    use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
+    --use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
     use("folke/zen-mode.nvim")
     use("eandrju/cellular-automaton.nvim")
+    use {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        requires = { {"nvim-lua/plenary.nvim"} }
+    }
 
 end)
 
