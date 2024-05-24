@@ -31,6 +31,21 @@ return require('packer').startup(function(use)
             local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
             ts_update()
         end,
+        config = function()
+            require'nvim-treesitter.configs'.setup {
+                -- Other Treesitter configurations...
+                matchup = {
+                    enable = true,              -- mandatory, false will disable the whole extension
+                },
+                -- Any other Treesitter configurations...
+            }
+        end,
+    }
+    use {
+        'andymass/vim-matchup',
+        setup = function()
+            vim.g.matchup_matchparen_offscreen = { method = "popup" }
+        end,
     }
     -- use('nvim-treesitter/playground')
     use('mbbill/undotree')
@@ -74,6 +89,8 @@ return require('packer').startup(function(use)
         branch = "harpoon2",
         requires = { {"nvim-lua/plenary.nvim"} }
     }
-
+    use {
+        'windwp/nvim-ts-autotag',
+    }
 end)
 
